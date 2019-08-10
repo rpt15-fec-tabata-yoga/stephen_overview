@@ -1,4 +1,6 @@
 import React from 'react';
+import styles from './style.css';
+
 
 // depending on the number of tags, create that many <a> tags and style those tags
 // add on hover

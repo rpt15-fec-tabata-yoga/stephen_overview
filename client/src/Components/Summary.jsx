@@ -1,5 +1,5 @@
 import React from 'react';
-import faker from 'faker';
+import styles from './style.css';
 
 class Summary extends React.Component {
   constructor(props) {
