@@ -3,6 +3,7 @@ import axios from 'axios';
 import BannerImage from './BannerImage.jsx';
 import Summary from './Summary.jsx';
 import Details from './Details.jsx';
+import Tags from './Tags.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class App extends React.Component {
             <BannerImage />
             <Summary />
             <Details />
+            <Tags />
           </tbody>
         </table>
       </div>

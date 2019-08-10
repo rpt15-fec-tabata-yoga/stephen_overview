@@ -3,16 +3,21 @@ body {
   font-size:12px;
 }
 
-.summary {
-  color:#000;
+a {
+  text-decoration: none;
 }
 
 #overview {
-  width: 250px;
+  width: 300px;
+  background-color: rgba(27, 40, 56, 0.9);
 }
 
-.transparent {
-  opacity: 0.5;
+#banner {
+  width: 100%;
+}
+
+.summary {
+  color:#c6d4df;
 }
 
 .details {
@@ -25,10 +30,47 @@ body {
   padding-right:10px;
 }
 
-.end-review {
+.col-right {
+  color:#66C0F4;
+}
+
+.date {
+  color:#8f98a0;
+}
+
+.link a {
+  color: #66C0F4;
+  text-decoration:none;
+}
+
+.link a:hover {
+ color:#fff;
+}
+
+.pd-bottom-small {
   padding-bottom: 15px;
 }
 
-.end-release {
+.pd-bottom-big {
   padding-bottom: 20px;
+}
+
+.tags {
+  text-decoration:none;
+  background-color: rgba(103, 193, 245, 0.2);
+  color:#67c1f5;
+  padding: 0 7px;
+  box-shadow: none;
+  margin-right: 2px;
+  margin-bottom: 3px;
+  border-radius: 2px;
+  display: inline-block;
+  line-height: 19px;
+  max-width: 200px;
+  text-overflow: ellipsis;
+}
+
+.tags a:hover {
+  background-color:#0047ba;
+  color:#fff;
 }

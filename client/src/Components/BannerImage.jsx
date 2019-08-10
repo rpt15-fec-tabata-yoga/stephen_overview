@@ -9,8 +9,8 @@ class BannerImage extends React.Component {
   render() {
     return (
       <tr>
-        <td colspan="2">
-          <img src="https://source.unsplash.com/random/460x125" alt="header" />
+        <td>
+          <img id="banner" src="https://source.unsplash.com/random/460x125" alt="header" />
         </td>
       </tr>
     )
