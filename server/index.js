@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const db = require('../db/index.js');
 
 const app = express();
 
@@ -10,6 +11,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/', (req, res) => {
   res.send('hello');
 })
+
+
 
 const port = 3000;
 app.listen(port, () => {
