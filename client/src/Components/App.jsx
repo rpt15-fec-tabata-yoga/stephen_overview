@@ -1,5 +1,8 @@
 import React from 'react';
-import Overview from './Overview.jsx';
+import axios from 'axios';
+import BannerImage from './BannerImage.jsx';
+import Summary from './Summary.jsx';
+import Details from './Details.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,11 +10,18 @@ class App extends React.Component {
     this.state = {};
   }
 
+  // getData using axios get
+
   render() {
     return (
       <div>
-        <h1>Hello World</h1>
-        <Overview />
+        <table id="overview">
+          <tbody>
+            <BannerImage />
+            <Summary />
+            <Details />
+          </tbody>
+        </table>
       </div>
     )
   }
