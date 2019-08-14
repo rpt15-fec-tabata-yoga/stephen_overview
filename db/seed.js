@@ -19,6 +19,6 @@ const seedData = () => {
       tags: randomTags
     });
   }
-}
+};
 
 seedData();

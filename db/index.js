@@ -25,7 +25,7 @@ const save = (doc) => {
     if (err) {
       console.log('error while saving to db');
     }
-  })
+  });
 };
 
 const retrieve = () => {
