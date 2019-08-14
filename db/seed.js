@@ -1,4 +1,5 @@
 const db = require('./index.js');
+const faker = require('faker');
 
 // add fake data to database
 const seedData = () => {
@@ -9,15 +10,15 @@ const seedData = () => {
     randomTags.push(faker.random.word());
   }
 
-  for (let i = 0; i < 95; i++) {
+  for (let i = 0; i < 100; i++) {
     db.save({
       description: faker.lorem.paragraph(),
       releaseDate: faker.date.past(),
       developer: faker.company.companyName(),
       publisher: faker.company.companyName(),
       tags: randomTags
-    })
+    });
   }
 }
 
-module.exports.seedData = seedData;
+seedData();
