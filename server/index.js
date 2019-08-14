@@ -8,8 +8,10 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.send('hello');
+app.get('/game-overview', (req, res) => {
+  db.retrieve((data) => {
+    res.send(data[0]);
+  });
 });
 
 

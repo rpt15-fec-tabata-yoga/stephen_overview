@@ -25,11 +25,20 @@ const save = (doc) => {
     if (err) {
       console.log('error while saving to db');
     }
-  })
+  });
 };
 
-const retrieve = () => {
-  console.log('retrieve function for mongoose');
+const retrieve = (callback) => {
+  return Overview.find({})
+           .limit(1)
+           .exec((err, results) => {
+             if (err) {
+               console.log('error while retrieving data from db');
+             }
+             else {
+              callback(results);
+             }
+           })
 }
 
 module.exports.save = save;

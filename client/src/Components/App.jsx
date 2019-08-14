@@ -9,10 +9,28 @@ import Tags from './Tags.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      game: {}
+    };
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   // getData using axios get
+  getData() {
+    axios.get('/game-overview')
+      .then((res) => {
+        // handle data
+        console.log('res from axios get in client', res.data);
+        this.setState({ game: res.data })
+
+      })
+      .catch((err) => {
+        console.log('error in get request in client');
+      })
+  }
 
   render() {
     return (
