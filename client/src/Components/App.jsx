@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+// import styles from './style.css';
 import BannerImage from './BannerImage.jsx';
 import Summary from './Summary.jsx';
 import Details from './Details.jsx';
@@ -25,7 +26,7 @@ class App extends React.Component {
           </tbody>
         </table>
       </div>
-    )
+    );
   }
 }
 
