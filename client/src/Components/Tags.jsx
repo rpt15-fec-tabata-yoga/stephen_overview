@@ -11,8 +11,11 @@ const Tags = (props) => {
       <td>
         <div className="details pd-bottom-small">Popular user-defined tags for this product:</div>
         <div>
-          <a className="tags" href="#">RPG</a>
-          <a className="tags" href="#">Pixel Graphics</a>
+          {props.userTags.map((tag) => {
+            return (
+              <a className="tags" href="#">{tag}</a>
+            );
+          })}
         </div>
       </td>
     </tr>
