@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './style.css';
+// import styles from './style.css';
 
 
 // depending on the number of tags, create that many <a> tags and style those tags
@@ -9,10 +9,10 @@ const Tags = (props) => {
   return (
     <tr>
       <td>
-        <div class="details pd-bottom-small">Popular user-defined tags for this product:</div>
+        <div className="details pd-bottom-small">Popular user-defined tags for this product:</div>
         <div>
-          <a class="tags" href="#">RPG</a>
-          <a class="tags" href="#">Pixel Graphics</a>
+          <a className="tags" href="#">RPG</a>
+          <a className="tags" href="#">Pixel Graphics</a>
         </div>
       </td>
     </tr>
