@@ -38,7 +38,7 @@ const retrieve = (callback) => {
              else {
               callback(results);
              }
-           })
+           });
 }
 
 module.exports.save = save;

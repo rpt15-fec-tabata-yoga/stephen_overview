@@ -40,7 +40,6 @@ class App extends React.Component {
           tags: res.data.tags
           // add two more keys for overall reviews and recent reviews
         })
-
       })
       .catch((err) => {
         console.log('error in get request in client', err);
@@ -54,12 +53,11 @@ class App extends React.Component {
         // handle data
         console.log('res from axios get in client for image', res.data);
         this.setState({ image: res.data })
-
       })
       .catch((err) => {
         console.log('error in get request in client', err);
       })
-  }
+  };
 
   // review once Therese sets up her database
   getReviews() {
@@ -68,12 +66,11 @@ class App extends React.Component {
         // handle data
         console.log('res from axios get in client for reviews', res.data);
         this.setState({ reviews: res.data })
-
       })
       .catch((err) => {
         console.log('error in get request in client', err);
       })
-  }
+  };
 
 
   render() {
