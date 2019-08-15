@@ -13,7 +13,7 @@ const seedData = () => {
   for (let i = 0; i < 100; i++) {
     db.save({
       description: faker.lorem.paragraph(),
-      releaseDate: faker.date.past(),
+      releaseDate: faker.date.past().toISOString(),
       developer: faker.company.companyName(),
       publisher: faker.company.companyName(),
       tags: randomTags
