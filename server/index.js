@@ -10,8 +10,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/api/overview/:gameId', (req, res) => {
-  db.retrieve((data) => {
-    res.send(data[0]);
+  db.retrieve(req.params.gameId, (gameInfo) => {
+    res.send(gameInfo);
   });
 });
 

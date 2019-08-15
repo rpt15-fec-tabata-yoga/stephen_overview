@@ -28,14 +28,14 @@ const save = (gameInfo) => {
   });
 };
 
-const retrieve = (sendToClient) => {
-  Overview.find({})
-    .limit(1)
+const retrieve = (gameId, sendToClient) => {
+  Overview.findById(gameId)
     .exec((err, results) => {
       if (err) {
         console.log('error while retrieving data from db');
       }
       else {
+      // console.log('results in mongo retrieve', results);
       sendToClient(results);
       }
     });

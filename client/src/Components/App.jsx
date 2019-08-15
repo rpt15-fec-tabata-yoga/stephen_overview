@@ -21,17 +21,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getData();
-    this.getImage();
-    this.getReviews();
+    this.getGameData();
+    // this.getImage();
+    // this.getReviews();
   }
 
   getGameId() {
     return window.location.href.split('?').pop();
   }
 
-  // getData using axios get
-  getData() {
+  // getGameData using axios get
+  getGameData() {
     axios.get('/api/overview/' + this.getGameId())
       .then((res) => {
         // handle data
@@ -61,7 +61,7 @@ class App extends React.Component {
       .catch((err) => {
         console.log('error in get request in client', err);
       })
-  };
+  }
 
   // review once Therese sets up her database
   getReviews() {
@@ -74,8 +74,7 @@ class App extends React.Component {
       .catch((err) => {
         console.log('error in get request in client', err);
       })
-  };
-
+  }
 
   render() {
     return (
