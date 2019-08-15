@@ -19,8 +19,8 @@ const OverviewSchema = new mongoose.Schema({
 
 const Overview = mongoose.model('Overview', OverviewSchema);
 
-const save = (doc) => {
-  let newDoc = new Overview(doc);
+const save = (gameInfo) => {
+  let newDoc = new Overview(gameInfo);
   newDoc.save((err) => {
     if (err) {
       console.log('error while saving to db');
@@ -28,17 +28,17 @@ const save = (doc) => {
   });
 };
 
-const retrieve = (callback) => {
-  return Overview.find({})
-           .limit(1)
-           .exec((err, results) => {
-             if (err) {
-               console.log('error while retrieving data from db');
-             }
-             else {
-              callback(results);
-             }
-           });
+const retrieve = (sendToClient) => {
+  Overview.find({})
+    .limit(1)
+    .exec((err, results) => {
+      if (err) {
+        console.log('error while retrieving data from db');
+      }
+      else {
+      sendToClient(results);
+      }
+    });
 }
 
 module.exports.save = save;

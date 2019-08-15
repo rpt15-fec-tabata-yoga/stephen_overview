@@ -26,9 +26,13 @@ class App extends React.Component {
     this.getReviews();
   }
 
+  getGameId() {
+    return window.location.href.split('?').pop();
+  }
+
   // getData using axios get
   getData() {
-    axios.get('/api/overview')
+    axios.get('/api/overview/' + this.getGameId())
       .then((res) => {
         // handle data
         console.log('res from axios get in client', res.data);
@@ -48,7 +52,7 @@ class App extends React.Component {
 
   // review once Bryan updates his database
   getImage() {
-    axios.get('/api/image')
+    axios.get('/api/image/' + this.getGameId())
       .then((res) => {
         // handle data
         console.log('res from axios get in client for image', res.data);
@@ -61,7 +65,7 @@ class App extends React.Component {
 
   // review once Therese sets up her database
   getReviews() {
-    axios.get('/api/reviews')
+    axios.get('/api/reviews/' + this.getGameId())
       .then((res) => {
         // handle data
         console.log('res from axios get in client for reviews', res.data);
