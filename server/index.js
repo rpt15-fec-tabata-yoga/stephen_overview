@@ -9,18 +9,18 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/api/overview', (req, res) => {
-  db.retrieve((data) => {
-    res.send(data[0]);
+app.get('/api/overview/:gameId', (req, res) => {
+  db.retrieve(req.params.gameId, (gameInfo) => {
+    res.send(gameInfo);
   });
 });
 
-app.get('/api/image', (req, res) => {
+app.get('/api/image/:gameId', (req, res) => {
   // make request to Bryan's server
   console.log('got to image get request in server');
 });
 
-app.get('/api/reviews', (req, res) => {
+app.get('/api/reviews/:gameId', (req, res) => {
   // make request to Therese's server
   console.log('got to reviews get request in server');
 });
