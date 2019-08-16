@@ -9,7 +9,7 @@ const Details = (props) => {
         <table className="details">
           <tbody>
             <tr>
-              <td className="col-left"><a className="details" href="#">Recent Reviews:</a></td>
+              <td className="col-left"><a className="details tooltip" href="#">Recent Reviews: <span className="tooltiptext">TESTING</span></a></td>
               <td className="col-right"><a className="col-right" href="#">**add recent reviews</a></td>
             </tr>
             <tr>

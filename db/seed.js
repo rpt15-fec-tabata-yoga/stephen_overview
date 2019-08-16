@@ -13,8 +13,9 @@ const seedData = () => {
     }
 
     db.save({
+      game_name: faker.random.word(),
       description: faker.lorem.paragraph(),
-      releaseDate: faker.date.past().toISOString(),
+      release_date: faker.date.past().toISOString(),
       developer: faker.company.companyName(),
       publisher: faker.company.companyName(),
       tags: randomTags

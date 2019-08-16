@@ -5,7 +5,7 @@ const Summary = (props) => {
   return (
     <tr>
       <td>
-        <p className="summary">{props.description}</p>
+        <p className="summary tooltip">{props.description}</p>
       </td>
     </tr>
   );

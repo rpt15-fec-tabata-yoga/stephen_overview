@@ -10,8 +10,9 @@ db.once('open', () => {
 });
 
 const OverviewSchema = new mongoose.Schema({
+  game_name: String,
   description: String,
-  releaseDate: String,
+  release_date: String,
   developer: String,
   publisher: String,
   tags: Array
@@ -23,7 +24,7 @@ const save = (gameInfo) => {
   let newDoc = new Overview(gameInfo);
   newDoc.save((err) => {
     if (err) {
-      console.log('error while saving to db');
+      console.log('error while saving to db', err);
     }
   });
 };
