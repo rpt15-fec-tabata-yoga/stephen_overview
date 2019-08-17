@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {
       image: 'https://source.unsplash.com/random/460x125',
       description: '',
-      releaseDate: '',
+      release_date: '',
       developer: '',
       publisher: '',
       tags: [],
@@ -27,7 +27,11 @@ class App extends React.Component {
   }
 
   getGameId() {
-    return window.location.href.split('?').pop();
+    let url = window.location.href;
+
+    if (url.split('?').length === 2) {
+      return url.split('?').pop();
+    }
   }
 
   // getGameData using axios get
@@ -35,10 +39,9 @@ class App extends React.Component {
     axios.get('/api/overview/' + this.getGameId())
       .then((res) => {
         // handle data
-        console.log('res from axios get in client', res.data);
         this.setState({
           description: res.data.description,
-          releaseDate: res.data.releaseDate,
+          release_date: res.data.releaseDate,
           developer: res.data.developer,
           publisher: res.data.publisher,
           tags: res.data.tags
@@ -83,7 +86,7 @@ class App extends React.Component {
           <tbody>
             <BannerImage image={this.state.image} />
             <Summary description={this.state.description} />
-            <Details developer={this.state.developer} publisher={this.state.publisher} />
+            <Details developer={this.state.developer} publisher={this.state.publisher} release_date={this.state.release_date} />
             <Tags userTags={this.state.tags} />
           </tbody>
         </table>
