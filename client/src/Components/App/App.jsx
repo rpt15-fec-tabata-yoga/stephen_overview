@@ -10,6 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      gameId: window.location.pathname.split('/')[1],
       image: 'https://source.unsplash.com/random/460x125',
       description: '',
       release_date: '',
@@ -18,6 +19,8 @@ class App extends React.Component {
       tags: [],
       reviews: {}
     };
+
+
   }
 
   componentDidMount() {
@@ -26,22 +29,14 @@ class App extends React.Component {
     // this.getReviews();
   }
 
-  getGameId() {
-    let url = window.location.href;
-
-    if (url.split('?').length === 2) {
-      return url.split('?').pop();
-    }
-  }
-
   // getGameData using axios get
   getGameData() {
-    axios.get('/api/overview/' + this.getGameId())
+    axios.get('/api/overview/' + this.state.gameId)
       .then((res) => {
         // handle data
         this.setState({
           description: res.data.description,
-          release_date: res.data.releaseDate,
+          release_date: res.data.release_date,
           developer: res.data.developer,
           publisher: res.data.publisher,
           tags: res.data.tags
@@ -55,7 +50,7 @@ class App extends React.Component {
 
   // review once Bryan updates his database
   getImage() {
-    axios.get('/api/image/' + this.getGameId())
+    axios.get('/api/image/' + this.state.gameId)
       .then((res) => {
         // handle data
         console.log('res from axios get in client for image', res.data);
@@ -68,7 +63,7 @@ class App extends React.Component {
 
   // review once Therese sets up her database
   getReviews() {
-    axios.get('/api/reviews/' + this.getGameId())
+    axios.get('/api/reviews/' + this.state.gameId)
       .then((res) => {
         // handle data
         console.log('res from axios get in client for reviews', res.data);
