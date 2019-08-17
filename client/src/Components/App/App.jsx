@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 // import styles from './style.css';
-import BannerImage from './BannerImage.jsx';
-import Summary from './Summary.jsx';
-import Details from './Details.jsx';
-import Tags from './Tags.jsx';
+import BannerImage from '../BannerImage/BannerImage.jsx';
+import Summary from '../Summary/Summary.jsx';
+import Details from '../Details/Details.jsx';
+import Tags from '../Tags/Tags.jsx';
 
 class App extends React.Component {
   constructor(props) {
