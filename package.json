@@ -11,7 +11,8 @@
     "build": "webpack -d --watch",
     "start": "nodemon server/index.js",
     "db:setup": "node db/seed.js",
-    "test": "jest --verbose --coverage --watch",
+    "test": "jest --verbose --coverage",
+    "test:watch": "jest --verbose --coverage --watch",
     "test:update": "jest --verbose --coverage  --updateSnapshot",
     "coverage": "jest --verbose --coverage && open ./coverage/lcov-report/index.html"
   },
@@ -28,6 +29,7 @@
     "nodemon": "^1.19.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "request": "^2.88.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6"
   },
@@ -44,5 +46,10 @@
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^24.9.0",
     "style-loader": "^1.0.0"
+  },
+  "jest": {
+    "verbose": true,
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "transform": {"^.+\\.(js|jsx)$": "babel-jest"}
   }
 }

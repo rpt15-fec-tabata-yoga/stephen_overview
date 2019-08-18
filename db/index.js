@@ -34,6 +34,7 @@ const retrieve = (gameId, sendToClient) => {
     .exec((err, results) => {
       if (err) {
         console.log('error while retrieving data from db');
+        sendToClient('The game is not in our database')
       }
       else {
       // console.log('results in mongo retrieve', results);
