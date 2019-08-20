@@ -3,6 +3,8 @@ import React from 'react';
 
 
 const Details = (props) => {
+  let developerUrl = `https://store.steampowered.com/developer/${props.developer}`;
+  let publisherUrl = `https://store.steampowered.com/publisher/${props.publisher}`;
   return (
     <tr>
       <td>
@@ -18,15 +20,15 @@ const Details = (props) => {
             </tr>
             <tr>
               <td className="col-left pd-bottom-big">Release Date:</td>
-              <td className="pd-bottom-big date">**add release date</td>
+              <td className="pd-bottom-big date">{props.release_date}</td>
             </tr>
             <tr>
               <td className="col-left">Developer:</td>
-              <td className="col-right link"><a href="#">{props.developer}</a></td>
+              <td className="col-right link"><a href={developerUrl}>{props.developer}</a></td>
             </tr>
             <tr>
               <td className="col-left pd-bottom-big">Publisher:</td>
-              <td className="col-right pd-bottom-big link"><a href="#">{props.publisher}</a></td>
+              <td className="col-right pd-bottom-big link"><a href={publisherUrl}>{props.publisher}</a></td>
             </tr>
           </tbody>
         </table>

@@ -1,23 +1,26 @@
 import React from 'react';
 import axios from 'axios';
 // import styles from './style.css';
-import BannerImage from './BannerImage.jsx';
-import Summary from './Summary.jsx';
-import Details from './Details.jsx';
-import Tags from './Tags.jsx';
+import BannerImage from '../BannerImage/BannerImage.jsx';
+import Summary from '../Summary/Summary.jsx';
+import Details from '../Details/Details.jsx';
+import Tags from '../Tags/Tags.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      gameId: window.location.pathname.split('/')[1],
       image: 'https://source.unsplash.com/random/460x125',
       description: '',
-      releaseDate: '',
+      release_date: '',
       developer: '',
       publisher: '',
       tags: [],
       reviews: {}
     };
+
+
   }
 
   componentDidMount() {
@@ -26,19 +29,14 @@ class App extends React.Component {
     // this.getReviews();
   }
 
-  getGameId() {
-    return window.location.href.split('?').pop();
-  }
-
   // getGameData using axios get
   getGameData() {
-    axios.get('/api/overview/' + this.getGameId())
+    axios.get('/api/overview/' + this.state.gameId)
       .then((res) => {
         // handle data
-        console.log('res from axios get in client', res.data);
         this.setState({
           description: res.data.description,
-          releaseDate: res.data.releaseDate,
+          release_date: res.data.release_date,
           developer: res.data.developer,
           publisher: res.data.publisher,
           tags: res.data.tags
@@ -52,7 +50,7 @@ class App extends React.Component {
 
   // review once Bryan updates his database
   getImage() {
-    axios.get('/api/image/' + this.getGameId())
+    axios.get('/api/image/' + this.state.gameId)
       .then((res) => {
         // handle data
         console.log('res from axios get in client for image', res.data);
@@ -65,7 +63,7 @@ class App extends React.Component {
 
   // review once Therese sets up her database
   getReviews() {
-    axios.get('/api/reviews/' + this.getGameId())
+    axios.get('/api/reviews/' + this.state.gameId)
       .then((res) => {
         // handle data
         console.log('res from axios get in client for reviews', res.data);
@@ -83,7 +81,7 @@ class App extends React.Component {
           <tbody>
             <BannerImage image={this.state.image} />
             <Summary description={this.state.description} />
-            <Details developer={this.state.developer} publisher={this.state.publisher} />
+            <Details developer={this.state.developer} publisher={this.state.publisher} release_date={this.state.release_date} />
             <Tags userTags={this.state.tags} />
           </tbody>
         </table>

@@ -2,8 +2,8 @@ const db = require('./index.js');
 const faker = require('faker');
 
 // add fake data to database
-const seedData = () => {
-  for (let i = 0; i < 100; i++) {
+const seedData = (numOfData) => {
+  for (let i = 0; i < numOfData; i++) {
     // create random number of tags
     let random = Math.floor(Math.random() * 10);
     let randomTags = [];
@@ -13,8 +13,9 @@ const seedData = () => {
     }
 
     db.save({
+      game_name: faker.random.word(),
       description: faker.lorem.paragraph(),
-      releaseDate: faker.date.past().toISOString(),
+      release_date: faker.date.past().toISOString(),
       developer: faker.company.companyName(),
       publisher: faker.company.companyName(),
       tags: randomTags
@@ -22,4 +23,4 @@ const seedData = () => {
   }
 };
 
-seedData();
+seedData(100);
