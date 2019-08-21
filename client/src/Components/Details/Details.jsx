@@ -5,6 +5,8 @@ import styles from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/public/
 const Details = (props) => {
   let developerUrl = `https://store.steampowered.com/developer/${props.developer}`;
   let publisherUrl = `https://store.steampowered.com/publisher/${props.publisher}`;
+  let formattedDate = props.release_date.slice(0, 10)
+
   return (
     <tr>
       <td>
@@ -20,7 +22,7 @@ const Details = (props) => {
             </tr>
             <tr>
               <td className={`${styles.colLeft} ${styles.pdBottomBig}`}>Release Date:</td>
-              <td className={`${styles.pdBottomBig} ${styles.date}`}>{props.release_date}</td>
+              <td className={`${styles.pdBottomBig} ${styles.date}`}>{formattedDate}</td>
             </tr>
             <tr>
               <td className={styles.colLeft}>Developer:</td>
