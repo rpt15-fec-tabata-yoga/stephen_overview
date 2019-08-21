@@ -1,5 +1,5 @@
 import React from 'react';
-// import styles from './style.css';
+import styles from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/public/style.css';
 
 // add on hover
 
@@ -7,12 +7,12 @@ const Tags = (props) => {
   return (
     <tr>
       <td>
-        <div className="details pd-bottom-small">Popular user-defined tags for this product:</div>
+        <div className={`${styles.details} ${styles.pdBottomSmall}`}>Popular user-defined tags for this product:</div>
         <div>
           {props.userTags.map((tag) => {
             let url = `https://store.steampowered.com/tags/en/${tag}`
             return (
-              <a className="tags" href={url} key={tag}>{tag}</a>
+              <a className={styles.tags} href={url} key={tag}>{tag}</a>
             );
           })}
         </div>

@@ -1,12 +1,12 @@
 import React from 'react';
-// import styles from './style.css';
+import styles from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/public/style.css';
 
 
 const BannerImage = (props) => {
     return (
       <tr>
         <td>
-          <img id="banner" src={props.image} alt="header" />
+          <img id={styles.banner} src={props.image} alt="header" />
         </td>
       </tr>
     );
