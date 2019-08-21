@@ -11,10 +11,33 @@ module.exports = {
             presets: ['@babel/preset-react', '@babel/preset-env']
           }
         }
-      }
-    ]
-  },
-   output: {
+      },
+      {
+        test: [/\.js$/],
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react', '@babel/preset-env']
+          }
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true
+            }
+          }
+        ]
+      }]},
+  output: {
     filename: 'bundle.js',
     path: __dirname + '/public/dist/'
   }

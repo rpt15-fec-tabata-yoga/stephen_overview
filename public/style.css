@@ -26,11 +26,11 @@ a {
   color:#556772;
 }
 
-.col-left {
+.colLeft {
   padding-right:10px;
 }
 
-.col-right {
+.colRight {
   color:#66C0F4;
 }
 
@@ -47,11 +47,11 @@ a {
  color:#fff;
 }
 
-.pd-bottom-small {
+.pdBottomSmall {
   padding-bottom: 15px;
 }
 
-.pd-bottom-big {
+.pdBottomBig {
   padding-bottom: 20px;
 }
 

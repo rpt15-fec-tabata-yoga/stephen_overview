@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-// import styles from './style.css';
 import BannerImage from '../BannerImage/BannerImage.jsx';
 import Summary from '../Summary/Summary.jsx';
 import Details from '../Details/Details.jsx';
 import Tags from '../Tags/Tags.jsx';
+import styles from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/public/style.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -77,7 +77,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <table id="overview">
+        <table id={styles.overview}>
           <tbody>
             <BannerImage image={this.state.image} />
             <Summary description={this.state.description} />
