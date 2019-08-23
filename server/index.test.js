@@ -1,7 +1,5 @@
-// const React = require('react');
 import React from 'react';
 // const { shallow, mount, render } = require('enzyme');
-// const request = require('request');
 import request from 'request';
 
 test('API call with gameId should return information for a game with that id', (done) => {
