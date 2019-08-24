@@ -18,9 +18,11 @@ class App extends React.Component {
       publisher: '',
       tags: [],
       reviews: {}
+      // visible: false
     };
 
-
+    // this.handleMouseOver = this.handleMouseOver.bind(this);
+    // this.handleMouseOut = this.handleMouseOut.bind(this);
   }
 
   componentDidMount() {
@@ -73,6 +75,14 @@ class App extends React.Component {
         console.log('error in get request in client', err);
       })
   }
+
+  // handleMouseOver() {
+  //   this.setState({ visible: true });
+  // }
+
+  // handleMouseOut() {
+  //   this.setState({ visible: false });
+  // }
 
   render() {
     return (
