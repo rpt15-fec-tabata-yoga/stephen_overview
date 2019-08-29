@@ -18,7 +18,6 @@ class App extends React.Component {
       publisher: '',
       tags: [],
       reviews: {}
-      // visible: false
     };
 
     // this.handleMouseOver = this.handleMouseOver.bind(this);
@@ -27,7 +26,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getGameData();
-    // this.getImage();
+    this.getImage();
     // this.getReviews();
   }
 
@@ -76,23 +75,16 @@ class App extends React.Component {
       })
   }
 
-  // handleMouseOver() {
-  //   this.setState({ visible: true });
-  // }
-
-  // handleMouseOut() {
-  //   this.setState({ visible: false });
-  // }
-
   render() {
+    const {state} = this;
     return (
       <div>
         <table id={styles.overview}>
           <tbody>
-            <BannerImage image={this.state.image} />
-            <Summary description={this.state.description} />
-            <Details developer={this.state.developer} publisher={this.state.publisher} release_date={this.state.release_date} />
-            <Tags userTags={this.state.tags} />
+            <BannerImage image={state.image} />
+            <Summary description={state.description} />
+            <Details developer={state.developer} publisher={state.publisher} release_date={state.release_date} review={state.reviews}/>
+            <Tags userTags={state.tags} />
           </tbody>
         </table>
       </div>
