@@ -4,11 +4,9 @@ import styles from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/public/
 
 const BannerImage = (props) => {
     return (
-      <tr>
-        <td>
-          <img id={styles.banner} src={props.image} alt="header" />
-        </td>
-      </tr>
+      <div id={styles.banner}>
+        <img className={styles.bannerImg} src={props.image} alt="header" />
+      </div>
     );
   }
 

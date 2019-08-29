@@ -3,11 +3,9 @@ import styles from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/public/
 
 const Summary = (props) => {
   return (
-    <tr>
-      <td>
-        <p className={styles.summary}>{props.description}</p>
-      </td>
-    </tr>
+    <div className={styles.summary}>
+      {props.description}
+    </div>
   );
 }
 

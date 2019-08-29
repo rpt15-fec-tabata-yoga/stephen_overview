@@ -78,15 +78,11 @@ class App extends React.Component {
   render() {
     const {state} = this;
     return (
-      <div>
-        <table id={styles.overview}>
-          <tbody>
+      <div className={styles.container}>
             <BannerImage image={state.image} />
             <Summary description={state.description} />
             <Details developer={state.developer} publisher={state.publisher} release_date={state.release_date} review={state.reviews}/>
             <Tags userTags={state.tags} />
-          </tbody>
-        </table>
       </div>
     );
   }

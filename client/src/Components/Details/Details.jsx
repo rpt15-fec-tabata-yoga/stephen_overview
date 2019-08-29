@@ -37,45 +37,46 @@ class Details extends React.Component {
     let formattedDate = this.props.release_date.slice(0, 10)
 
     return (
-      <tr>
-        <td>
-          <table className={styles.details}>
-            <tbody>
-              <tr>
-                <td className={styles.colLeft} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}><a className={styles.details} href="#">
-                {
-                  this.state.visible &&
-                  <Tooltip ref={this.toolTipRef}/>
-                }
-                  Recent Reviews:</a></td>
-                <td className={styles.colRight}><a className={styles.colRight} href="#">
-                **add recent reviews</a></td>
-              </tr>
-              <tr>
-                <td className={`${styles.colLeft} ${styles.pdBottomSmall}`}><a className={styles.details} href="#">
-                {
-                  this.state.visible &&
-                  <Tooltip ref={this.toolTipRef}/>
-                }
-                All Reviews:</a></td>
-                <td className={`${styles.colRight} ${styles.pdBottomSmall}`}><a className={styles.colRight} href="#">**add all reviews</a></td>
-              </tr>
-              <tr>
-                <td className={`${styles.colLeft} ${styles.pdBottomBig}`}>Release Date:</td>
-                <td className={`${styles.pdBottomBig} ${styles.date}`}>{formattedDate}</td>
-              </tr>
-              <tr>
-                <td className={styles.colLeft}>Developer:</td>
-                <td className={`${styles.colRight} ${styles.link}`}><a href={developerUrl}>{this.props.developer}</a></td>
-              </tr>
-              <tr>
-                <td className={`${styles.colLeft} ${styles.pdBottomBig}`}>Publisher:</td>
-                <td className={`${styles.colRight} ${styles.pdBottomBig} ${styles.link}`}><a href={publisherUrl}>{this.props.publisher}</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
+      <div className={styles.detailsContainer}>
+        <div id={styles.item1a} className={`${styles.colLeft} ${styles.details}`} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}><a className={styles.details} href="#">
+            {
+              this.state.visible &&
+              <Tooltip ref={this.toolTipRef}/>
+            }
+              Recent Reviews:</a>
+        </div>
+        <div id={styles.item1b} className={styles.colRight}>
+          <a className={styles.colRight} href="#">**add recent reviews</a>
+        </div>
+        <div id={styles.item2a} className={`${styles.colLeft} ${styles.pdBottomSmall} ${styles.details}`}><a className={styles.details} href="#">
+            {
+              this.state.visible &&
+              <Tooltip ref={this.toolTipRef}/>
+            }
+            All Reviews:</a>
+        </div>
+        <div id={styles.item2b} className={`${styles.colRight} ${styles.pdBottomSmall}`}>
+          <a className={styles.colRight} href="#">**add all reviews</a>
+        </div>
+        <div id={styles.item3a} className={`${styles.colLeft} ${styles.pdBottomBig} ${styles.details}`}>
+          Release Date:
+        </div>
+        <div id={styles.item3b} className={`${styles.pdBottomBig} ${styles.date}`}>
+          {formattedDate}
+        </div>
+        <div id={styles.item4a} className={`${styles.colLeft} ${styles.details}`}>
+          Developer:
+        </div>
+        <div id={styles.item4b} className={`${styles.colRight} ${styles.link}`}>
+          <a href={developerUrl}>{this.props.developer}</a>
+        </div>
+        <div id={styles.item5a} className={`${styles.colLeft} ${styles.pdBottomBig} ${styles.details}`}>
+          Publisher:
+        </div>
+        <div id={styles.item5b} className={`${styles.colRight} ${styles.pdBottomBig} ${styles.link}`}>
+          <a href={publisherUrl}>{this.props.publisher}</a>
+        </div>
+     </div>
     );
   }
 }
