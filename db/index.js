@@ -1,6 +1,6 @@
 const faker = require('faker');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/overview', { useNewUrlParser: true });
+mongoose.connect('mongodb://database/overview', { useNewUrlParser: true });
 
 let db = mongoose.connection;
 
@@ -10,6 +10,7 @@ db.once('open', () => {
 });
 
 const OverviewSchema = new mongoose.Schema({
+  game_id: Number,
   game_name: String,
   description: String,
   release_date: String,
@@ -30,7 +31,7 @@ const save = (gameInfo) => {
 };
 
 const retrieve = (gameId, sendToClient) => {
-  Overview.findById(gameId)
+  Overview.find({ game_id: gameId})
     .exec((err, results) => {
       if (err) {
         console.log('error while retrieving data from db');

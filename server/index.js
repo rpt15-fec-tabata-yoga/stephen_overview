@@ -11,8 +11,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/api/overview/:gameId', (req, res) => {
-  // console.log('req.params.gameId', req.params.gameId);
+  console.log('req.params.gameId', req.params.gameId);
   db.retrieve(req.params.gameId, (gameInfo) => {
+    console.log('game information from mongo', gameInfo);
     res.send(gameInfo);
   });
 });

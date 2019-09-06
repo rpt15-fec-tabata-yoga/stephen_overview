@@ -12,14 +12,28 @@ const seedData = (numOfData) => {
       randomTags.push(faker.random.word());
     }
 
-    db.save({
-      game_name: faker.random.word(),
-      description: faker.lorem.paragraph(),
-      release_date: faker.date.past().toISOString(),
-      developer: faker.company.companyName(),
-      publisher: faker.company.companyName(),
-      tags: randomTags
-    });
+    // always make first object game_name Stardew_Valley
+    if (i === 0) {
+      db.save({
+        game_id: i,
+        game_name: 'Stardew_Valley',
+        description: faker.lorem.paragraph(),
+        release_date: faker.date.past().toISOString(),
+        developer: faker.company.companyName(),
+        publisher: faker.company.companyName(),
+        tags: randomTags
+      });
+    } else {
+      db.save({
+        game_id: i,
+        game_name: faker.random.word(),
+        description: faker.lorem.paragraph(),
+        release_date: faker.date.past().toISOString(),
+        developer: faker.company.companyName(),
+        publisher: faker.company.companyName(),
+        tags: randomTags
+      });
+    }
   }
 };
 
