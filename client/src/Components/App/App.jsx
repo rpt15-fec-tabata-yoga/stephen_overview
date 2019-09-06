@@ -35,6 +35,7 @@ class App extends React.Component {
     axios.get('/api/overview/' + this.state.gameId)
       .then((res) => {
         // handle data
+        console.log('res in getGameData in App.jsx', res);
         this.setState({
           description: res.data.description,
           release_date: res.data.release_date,

@@ -11,7 +11,11 @@ const seedData = (numOfData) => {
     for (let x = 0; x < random; x++) {
       randomTags.push(faker.random.word());
     }
-
+    if (i === numOfData - 1) {
+      setTimeout(() => {
+        process.exit();
+      }, 1000)
+    }
     // always make first object game_name Stardew_Valley
     if (i === 0) {
       db.save({
