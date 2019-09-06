@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/api/overview/:gameId', (req, res) => {
   console.log('req.params.gameId', req.params.gameId);
+  console.log('check if changes are being tracked *******');
   db.retrieve(req.params.gameId, (gameInfo) => {
     console.log('game information from mongo', gameInfo);
     res.send(gameInfo);
@@ -26,6 +27,21 @@ app.get('/api/image/:gameId', (req, res) => {
 app.get('/api/reviews/:gameId', (req, res) => {
   // make request to Therese's server
   console.log('got to reviews get request in server');
+
+  /*
+  information to send:
+    overall reviews for both:
+      - recent reviews (past 30 days)
+      - all reviews
+
+    recent reviews
+      - total number of reviews
+      - % of reviews that were positive/negative
+
+    all reviews
+      - total number of reviews
+      - % of reviews that were positive/negative
+  */
 });
 
 
