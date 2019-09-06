@@ -1,6 +1,7 @@
 const db = require('./index.js');
 const faker = require('faker');
 
+
 // add fake data to database
 const seedData = (numOfData) => {
   for (let i = 0; i < numOfData; i++) {
@@ -41,4 +42,11 @@ const seedData = (numOfData) => {
   }
 };
 
-seedData(100);
+// only seed database if there are no current documents in database
+db.count((results) => {
+    if (results === 0) {
+      seedData(100);
+    } else {
+      process.exit();
+    }
+});

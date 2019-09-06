@@ -1,6 +1,6 @@
 const faker = require('faker');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://database/overview', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/overview', { useNewUrlParser: true });
 
 let db = mongoose.connection;
 
@@ -36,13 +36,24 @@ const retrieve = (gameId, sendToClient) => {
       if (err) {
         console.log('error while retrieving data from db');
         sendToClient('The game is not in our database')
-      }
-      else {
+      } else {
       // console.log('results in mongo retrieve', results);
       sendToClient(results);
       }
     });
 }
 
+const count = (log) => {
+  Overview.countDocuments({})
+    .exec((err, results) => {
+      if (err) {
+        console.log('error while getting count of documents in db');
+      } else {
+        log(results);
+      }
+    })
+};
+
 module.exports.save = save;
 module.exports.retrieve = retrieve;
+module.exports.count = count;
