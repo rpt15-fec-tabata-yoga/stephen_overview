@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const https = require('https');
+const axios = require('axios');
 const db = require('../db/index.js');
+const port = 3000;
 
 const app = express();
 
@@ -23,29 +24,21 @@ app.get('/api/image/:gameId', (req, res) => {
   console.log('got to image get request in server');
 });
 
-app.get('/api/reviews/:gameId', (req, res) => {
+app.get('/api/reviews/:gameName', (req, res) => {
   // make request to Therese's server
   console.log('got to reviews get request in server');
-
-  /*
-  information to send:
-    overall reviews for both:
-      - recent reviews (past 30 days)
-      - all reviews
-
-    recent reviews
-      - total number of reviews
-      - % of reviews that were positive/negative
-
-    all reviews
-      - total number of reviews
-      - % of reviews that were positive/negative
-  */
+  axios.get('http://localhost:3001/api/reviews/:gameName')
+    .then((response) => {
+      console.log('res from get request to Therese', response);
+      // may need to change response to something else if the data
+      res.send(response);
+    })
+    .catch((error) => {
+      console.log('error in get request to Therese database', error);
+    });
 });
 
 
-
-const port = 3000;
 app.listen(port, () => {
   console.log(`App listening on ${port}`);
 });
