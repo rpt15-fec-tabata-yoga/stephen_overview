@@ -9,23 +9,28 @@ const isPosOrNeg = (revs) => {
     }
   }
 
+  let result = [];
   if (pos > neg) {
     let percent = (pos / revs.length) * 100;
+    result.push(percent.toString());
     if (percent > 50 && percent < 75) {
-        return 'Very Positive';
+      result.push('Very Positive');
     } else if (percent >= 75) {
-        return 'Overwhelmingly Positive';
+      result.push('Overwhelmingly Positive');
     }
   } else if (pos < neg) {
     let percent = (pos / revs.length) * 100;
+    result.push(percent.toString());
     if (percent > 25 && percent < 50) {
-        return 'Very Negative';
+      result.push('Very Negative');
     } else if (percent <= 25) {
-        return 'Overwhelmingly Negative';
+      result.push('Overwhelmingly Negative');
     }
   } else if (pos === neg) {
-    return 'Very Positive';
+    result.push('Very Positive');
   }
+
+  return result;
 };
 
 export default isPosOrNeg;

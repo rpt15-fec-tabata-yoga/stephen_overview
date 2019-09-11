@@ -5,6 +5,8 @@ import Summary from '../Summary/Summary.jsx';
 import Details from '../Details/Details.jsx';
 import Tags from '../Tags/Tags.jsx';
 import styles from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/public/style.css';
+import isPosOrNeg from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/utils/utilities.js';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +19,12 @@ class App extends React.Component {
       developer: '',
       publisher: '',
       tags: [],
-      reviews: {}
+      totalReviews: [],
+      percentTotalReviewsPosOrNeg: '',
+      overallPosOrNeg: '',
+      recentPosOrNeg: '',
+      recent: [],
+      percentRecentPosOrNeg: ''
     };
 
     // this.handleMouseOver = this.handleMouseOver.bind(this);
@@ -27,7 +34,7 @@ class App extends React.Component {
   componentDidMount() {
     this.getGameData();
     this.getImage();
-    // this.getReviews();
+    this.getReviews();
   }
 
   // getGameData using axios get
@@ -46,7 +53,7 @@ class App extends React.Component {
       })
       .catch((err) => {
         console.log('error in get request in client', err);
-      })
+      });
   }
 
   // review once Bryan updates his database
@@ -59,20 +66,44 @@ class App extends React.Component {
       })
       .catch((err) => {
         console.log('error in get request in client', err);
-      })
+      });
   }
 
   // review once Therese sets up her database
   getReviews() {
-    axios.get('/api/reviews/' + this.state.gameId)
-      .then((res) => {
-        // handle data
-        console.log('res from axios get in client for reviews', res.data);
-        this.setState({ reviews: res.data })
-      })
-      .catch((err) => {
-        console.log('error in get request in client', err);
-      })
+    axios.get('/api/image/' + this.state.gameId)
+    .then((data) => {
+      this.setState({
+        totalReviews: data.data
+      });
+    })
+    .then(() => {
+      let posOrNeg = isPosOrNeg(this.state.reviews);
+      this.setState({
+        overallPosOrNeg: posOrNeg[1],
+        percentTotalReviewsPosOrNeg: posOrNeg[0]
+      });
+    })
+    .then(() => {
+      let recent = [];
+      let today = new Date();
+      let thirtyDaysAgo = new Date(today - (30 * 86400000));
+      for (let i = 0; i < this.state.totalReviews.length; ++i) {
+        let posted = new Date(this.state.totalReviews[i].posted);
+        if (thirtyDaysAgo <= posted && posted <= today) {
+          recent.push(this.state.totalReviews[i]);
+        }
+      }
+      let posOrNeg = isPosOrNeg(recent);
+      this.setState({
+        recent: recent,
+        recentPosOrNeg: posOrNeg[1],
+        percentRecentPosOrNeg: posOrNeg[0]
+      });
+    })
+    .catch((err) => {
+      throw(err);
+    });
   }
 
   render() {
