@@ -5,7 +5,7 @@ import Summary from '../Summary/Summary.jsx';
 import Details from '../Details/Details.jsx';
 import Tags from '../Tags/Tags.jsx';
 import styles from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/public/style.css';
-import isPosOrNeg from '/utils/utilities.js';
+import isPosOrNeg from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/utils/utilities.js';
 
 
 class App extends React.Component {
@@ -71,7 +71,7 @@ class App extends React.Component {
 
   // review once Therese sets up her database
   getReviews() {
-    axios.get('/api/reviews/' + this.state.gameId)
+    axios.get('/api/image/' + this.state.gameId)
     .then((data) => {
       this.setState({
         totalReviews: data.data
