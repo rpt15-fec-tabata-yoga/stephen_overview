@@ -35,28 +35,30 @@ class Details extends React.Component {
     let developerUrl = `https://store.steampowered.com/developer/${this.props.developer}`;
     let publisherUrl = `https://store.steampowered.com/publisher/${this.props.publisher}`;
     let formattedDate = this.props.release_date.slice(0, 10)
+    let numRecentReviews = this.props.recent.length;
+    let numTotalReviews = this.props.totalReviews.length;
 
     return (
       <div className={styles.detailsContainer}>
         <div id={styles.item1a} className={`${styles.colLeft} ${styles.details}`} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}><a className={styles.details} href="#">
             {
               this.state.visible &&
-              <Tooltip ref={this.toolTipRef}/>
+              <Tooltip ref={this.toolTipRef} percent={this.props.percentRecentPosOrNeg} reviews={this.props.recent} posOrNeg={this.props.recentPosOrNeg} />
             }
               Recent Reviews:</a>
         </div>
         <div id={styles.item1b} className={styles.colRight}>
-          <a className={styles.colRight} href="#">**add recent reviews</a>
+          <a className={styles.colRight} href="#">{this.props.recentPosOrNeg} <span className={styles.detailsBody}>({numRecentReviews})</span></a>
         </div>
         <div id={styles.item2a} className={`${styles.colLeft} ${styles.pdBottomSmall} ${styles.details}`}><a className={styles.details} href="#">
             {
               this.state.visible &&
-              <Tooltip ref={this.toolTipRef}/>
+              <Tooltip ref={this.toolTipRef} percent={this.props.percentTotalReviewsPosOrNeg} reviews={this.props.totalReviews} posOrNeg={this.props.overallPosOrNeg} />
             }
             All Reviews:</a>
         </div>
         <div id={styles.item2b} className={`${styles.colRight} ${styles.pdBottomSmall}`}>
-          <a className={styles.colRight} href="#">**add all reviews</a>
+          <a className={styles.colRight} href="#">{this.props.overallPosOrNeg} <span className={styles.detailsBody}>({numTotalReviews})</span></a>
         </div>
         <div id={styles.item3a} className={`${styles.colLeft} ${styles.pdBottomBig} ${styles.details}`}>
           Release Date:
