@@ -71,20 +71,23 @@ class App extends React.Component {
 
   // review once Therese sets up her database
   getReviews() {
-    axios.get('/api/image/' + this.state.gameId)
+    axios.get('/api/reviews/' + this.state.gameId)
     .then((data) => {
+      console.log('therese data in client', data.data);
       this.setState({
         totalReviews: data.data
       });
     })
     .then(() => {
-      let posOrNeg = isPosOrNeg(this.state.reviews);
+      console.log('got to second .then')
+      let posOrNeg = isPosOrNeg(this.state.totalReviews);
       this.setState({
         overallPosOrNeg: posOrNeg[1],
         percentTotalReviewsPosOrNeg: posOrNeg[0]
       });
     })
     .then(() => {
+      console.log('got to third .then')
       let recent = [];
       let today = new Date();
       let thirtyDaysAgo = new Date(today - (30 * 86400000));
@@ -112,7 +115,17 @@ class App extends React.Component {
       <div className={styles.container}>
             <BannerImage image={state.image} />
             <Summary description={state.description} />
-            <Details developer={state.developer} publisher={state.publisher} release_date={state.release_date} review={state.reviews}/>
+            <Details
+              developer={state.developer}
+              publisher={state.publisher}
+              release_date={state.release_date}
+              totalReviews={state.totalReviews}
+              percentTotalReviewsPosOrNeg={state.percentTotalReviewsPosOrNeg}
+              overallPosOrNeg={state.overallPosOrNeg}
+              recentPosOrNeg={state.recentPosOrNeg}
+              recent={state.recent}
+              percentRecentPosOrNeg={state.percentRecentPosOrNeg}
+            />
             <Tags userTags={state.tags} />
       </div>
     );

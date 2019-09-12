@@ -46,7 +46,7 @@ class Details extends React.Component {
               Recent Reviews:</a>
         </div>
         <div id={styles.item1b} className={styles.colRight}>
-          <a className={styles.colRight} href="#">**add recent reviews</a>
+          <a className={styles.colRight} href="#">{this.props.recentPosOrNeg}</a>
         </div>
         <div id={styles.item2a} className={`${styles.colLeft} ${styles.pdBottomSmall} ${styles.details}`}><a className={styles.details} href="#">
             {
@@ -56,7 +56,7 @@ class Details extends React.Component {
             All Reviews:</a>
         </div>
         <div id={styles.item2b} className={`${styles.colRight} ${styles.pdBottomSmall}`}>
-          <a className={styles.colRight} href="#">**add all reviews</a>
+          <a className={styles.colRight} href="#">{this.props.overallPosOrNeg} </a>
         </div>
         <div id={styles.item3a} className={`${styles.colLeft} ${styles.pdBottomBig} ${styles.details}`}>
           Release Date:
