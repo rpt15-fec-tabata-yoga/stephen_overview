@@ -48,6 +48,10 @@ a {
   grid-row: 3 / 3;
 }
 
+.detailsBody {
+  color:#556772;
+}
+
 #item1a {
   grid-column: 1 / 1;
   grid-row: 1 / 1;

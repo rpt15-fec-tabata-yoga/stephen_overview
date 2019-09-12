@@ -73,13 +73,11 @@ class App extends React.Component {
   getReviews() {
     axios.get('/api/reviews/' + this.state.gameId)
     .then((data) => {
-      console.log('therese data in client', data.data);
       this.setState({
         totalReviews: data.data
       });
     })
     .then(() => {
-      console.log('got to second .then')
       let posOrNeg = isPosOrNeg(this.state.totalReviews);
       this.setState({
         overallPosOrNeg: posOrNeg[1],
@@ -87,7 +85,6 @@ class App extends React.Component {
       });
     })
     .then(() => {
-      console.log('got to third .then')
       let recent = [];
       let today = new Date();
       let thirtyDaysAgo = new Date(today - (30 * 86400000));
