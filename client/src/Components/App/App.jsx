@@ -61,8 +61,8 @@ class App extends React.Component {
     axios.get('/api/image/' + this.state.gameId)
       .then((res) => {
         // handle data
-        console.log('res from axios get in client for image', res.data);
-        this.setState({ image: res.data })
+        console.log('res from axios get in client for image', res.data[0].imageUrl);
+        this.setState({ image: res.data[0].imageUrl })
       })
       .catch((err) => {
         console.log('error in get request in client', err);

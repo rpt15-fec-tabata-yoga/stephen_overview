@@ -21,18 +21,15 @@ app.get('/api/overview/:gameId', (req, res) => {
 
 app.get('/api/image/:gameId', (req, res) => {
   // make request to Bryan's server
+  axios.get('http://localhost:3002/api/image/1/stardew_valley')
+  .then((response) => {
+    // console.log('response.data from get request to Bryan', response.data);
+    res.send(response.data);
+  })
+  .catch((error) => {
+    console.log('error in get request to Bryan database', error);
+  });
 });
-
-// app.get('/api/reviews/:gameId', (req, res) => {
-//   // make request to Therese's server
-//   console.log('got to reviews get request in server');
-//   request('http://localhost:3001/api/reviews/Stardew%20Valley', (err, response, body) => {
-//     if (err) {
-//       console.log('error in therese request', err);
-//     }
-//     console.log('body in therese request', body);
-//   });
-// });
 
 app.get('/api/reviews/:gameId', (req, res) => {
   // make request to Therese's server
@@ -40,7 +37,6 @@ app.get('/api/reviews/:gameId', (req, res) => {
   axios.get('http://localhost:3001/api/reviews/Stardew%20Valley')
     .then((response) => {
       // console.log('response.data from get request to Therese', response.data);
-      // may need to change response to something else if the data
       res.send(response.data);
     })
     .catch((error) => {
