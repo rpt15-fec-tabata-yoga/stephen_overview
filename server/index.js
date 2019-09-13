@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-// const request = require('request');
+const compress = require('compression');
 const db = require('../db/index.js');
 const port = 3000;
 
@@ -9,6 +9,7 @@ const app = express();
 
 app.use('/', express.static('public'));
 app.use('/:gameId', express.static('public'));
+app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
