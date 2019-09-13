@@ -48,7 +48,6 @@ class App extends React.Component {
           developer: res.data[0].developer,
           publisher: res.data[0].publisher,
           tags: res.data[0].tags
-          // add two more keys for overall reviews and recent reviews
         })
       })
       .catch((err) => {
@@ -61,7 +60,7 @@ class App extends React.Component {
     axios.get('/api/image/' + this.state.gameId)
       .then((res) => {
         // handle data
-        console.log('res from axios get in client for image', res.data[0].imageUrl);
+        // console.log('res from axios get in client for image', res.data[0].imageUrl);
         this.setState({ image: res.data[0].imageUrl })
       })
       .catch((err) => {

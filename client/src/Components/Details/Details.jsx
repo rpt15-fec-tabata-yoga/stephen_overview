@@ -40,25 +40,41 @@ class Details extends React.Component {
 
     return (
       <div className={styles.detailsContainer}>
-        <div id={styles.item1a} className={`${styles.colLeft} ${styles.details}`} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}><a className={styles.details} href="#">
+        <div id={styles.item1a} className={`${styles.colLeft} ${styles.details}`} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
+          <a className={styles.details} href="#">
             {
               this.state.visible &&
               <Tooltip ref={this.toolTipRef} percent={this.props.percentRecentPosOrNeg} reviews={this.props.recent} posOrNeg={this.props.recentPosOrNeg} />
             }
-              Recent Reviews:</a>
+            Recent Reviews:
+          </a>
         </div>
-        <div id={styles.item1b} className={styles.colRight}>
-          <a className={styles.colRight} href="#">{this.props.recentPosOrNeg} <span className={styles.detailsBody}>({numRecentReviews})</span></a>
+        <div id={styles.item1b} className={styles.colRight} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
+          <a className={styles.colRight} href="#">
+            {
+              this.state.visible &&
+              <Tooltip ref={this.toolTipRef} percent={this.props.percentRecentPosOrNeg} reviews={this.props.recent} posOrNeg={this.props.recentPosOrNeg} />
+            }
+            {this.props.recentPosOrNeg} <span className={styles.detailsBody}>({numRecentReviews})</span>
+          </a>
         </div>
-        <div id={styles.item2a} className={`${styles.colLeft} ${styles.pdBottomSmall} ${styles.details}`}><a className={styles.details} href="#">
+        <div id={styles.item2a} className={`${styles.colLeft} ${styles.pdBottomSmall} ${styles.details}`} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
+          <a className={styles.details} href="#">
             {
               this.state.visible &&
               <Tooltip ref={this.toolTipRef} percent={this.props.percentTotalReviewsPosOrNeg} reviews={this.props.totalReviews} posOrNeg={this.props.overallPosOrNeg} />
             }
-            All Reviews:</a>
+            All Reviews:
+          </a>
         </div>
-        <div id={styles.item2b} className={`${styles.colRight} ${styles.pdBottomSmall}`}>
-          <a className={styles.colRight} href="#">{this.props.overallPosOrNeg} <span className={styles.detailsBody}>({numTotalReviews})</span></a>
+        <div id={styles.item2b} className={`${styles.colRight} ${styles.pdBottomSmall}`} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
+          <a className={styles.colRight} href="#">
+            {
+              this.state.visible &&
+              <Tooltip ref={this.toolTipRef} percent={this.props.percentTotalReviewsPosOrNeg} reviews={this.props.totalReviews} posOrNeg={this.props.overallPosOrNeg} />
+            }
+            {this.props.overallPosOrNeg} <span className={styles.detailsBody}>({numTotalReviews})</span>
+          </a>
         </div>
         <div id={styles.item3a} className={`${styles.colLeft} ${styles.pdBottomBig} ${styles.details}`}>
           Release Date:
