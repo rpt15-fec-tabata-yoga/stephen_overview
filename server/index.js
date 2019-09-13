@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const compress = require('compression');
+const compression = require('compression');
 const db = require('../db/index.js');
 const port = 3000;
 
