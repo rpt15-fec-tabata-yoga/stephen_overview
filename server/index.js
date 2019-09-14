@@ -25,7 +25,7 @@ app.get(`/api/overview/:gameId`, (req, res) => {
 
 app.get('/api/image/:gameId', (req, res) => {
   // make request to Bryan's server
-  axios.get('http://localhost:3002/api/image/1/stardew_valley')
+  axios.get('http://ec2-13-57-33-155.us-west-1.compute.amazonaws.com:3002/1/stardew_valley/api/image/1/stardew_valley')
   .then((response) => {
     // console.log('response.data from get request to Bryan', response.data);
     res.send(response.data);
@@ -38,7 +38,7 @@ app.get('/api/image/:gameId', (req, res) => {
 app.get('/api/reviews/:gameId', (req, res) => {
   // make request to Therese's server
   console.log('got to reviews get request in server');
-  axios.get('http://localhost:3001/api/reviews/Stardew%20Valley')
+  axios.get('http://ec2-54-67-60-167.us-west-1.compute.amazonaws.com/api/reviews/:gameId')
     .then((response) => {
       // console.log('response.data from get request to Therese', response.data);
       res.send(response.data);
