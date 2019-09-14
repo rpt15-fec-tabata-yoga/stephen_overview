@@ -8,9 +8,11 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build": "webpack -d --watch",
-    "start": "nodemon server/index.js",
-    "startDocker": "node db/seed.js && sleep 2 && nodemon server/index.js",
+    "dev": "webpack -d --watch --env.ENVIRONMENT=dev --config webpack.config.dev.js",
+    "build": "webpack -d --watch --env.ENVIRONMENT=prod --config webpack.config.build.js",
+    "start": "NODE_ENV=prod nodemon server/index.js",
+    "startDev": "NODE_ENV=dev nodemon server/index.js",
+    "startDocker": "node db/seed.js && sleep 2 && NODE_ENV=prod nodemon server/index.js",
     "db:setup": "node db/seed.js",
     "test": "jest --verbose --coverage",
     "test:watch": "jest --verbose --coverage --watch",
@@ -23,6 +25,7 @@
     "babel-plugin-react-css-modules": "^5.2.6",
     "babel-watch": "^7.0.0",
     "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "http-proxy-middleware": "^0.19.1",
@@ -30,7 +33,6 @@
     "nodemon": "^1.19.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "request": "^2.88.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6"
   },
@@ -41,6 +43,7 @@
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
+    "dotenv": "^8.1.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.4.0",
