@@ -10,8 +10,8 @@
   "scripts": {
     "dev": "webpack -d --watch --env.ENVIRONMENT=dev --config webpack.config.dev.js",
     "build": "webpack -d --watch --env.ENVIRONMENT=prod --config webpack.config.build.js",
-    "start": "NODE_ENV=prod nodemon server/index.js",
-    "startDev": "NODE_ENV=dev nodemon server/index.js",
+    "start": "NODE_ENV=prod DB_HOST=database nodemon server/index.js",
+    "startDev": "NODE_ENV=dev DB_HOST=localhost nodemon server/index.js",
     "startDocker": "node db/seed.js && sleep 2 && nodemon server/index.js",
     "db:setup": "node db/seed.js",
     "test": "jest --verbose --coverage",

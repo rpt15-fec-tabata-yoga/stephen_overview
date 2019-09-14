@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 
 if (process.env.NODE_ENV === 'dev') {
   dotenv.config({ path: `${__dirname}/../.env.dev` });
