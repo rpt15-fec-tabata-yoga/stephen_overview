@@ -22,3 +22,7 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
+
+# .env files
+.env
+.env.dev

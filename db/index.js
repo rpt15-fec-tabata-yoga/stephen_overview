@@ -1,6 +1,12 @@
-const faker = require('faker');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/overview', { useNewUrlParser: true });
+const dotenv = require('dotenv');
+
+if (process.env.NODE_ENV === 'dev') {
+  dotenv.config({ path: `${__dirname}/../.env.dev` });
+} else {
+  dotenv.config({ path: `${__dirname}/../.env` });
+}
+mongoose.connect(`mongodb://${process.env.DB_HOST}/overview`, { useNewUrlParser: true });
 
 let db = mongoose.connection;
 
