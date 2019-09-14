@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/public/style.css';
+import styles from '../../../../public/style.css';
 import Tooltip from '../Tooltip/Tooltip.jsx';
 
 

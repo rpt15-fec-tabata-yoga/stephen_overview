@@ -4,8 +4,8 @@ import BannerImage from '../BannerImage/BannerImage.jsx';
 import Summary from '../Summary/Summary.jsx';
 import Details from '../Details/Details.jsx';
 import Tags from '../Tags/Tags.jsx';
-import styles from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/public/style.css';
-import isPosOrNeg from '/Users/jenn/Desktop/HackReactor/FEC/stephen_overview/utils/utilities.js';
+import styles from '../../../../public/style.css';
+import isPosOrNeg from '../../../../utils/utilities.js';
 
 
 class App extends React.Component {

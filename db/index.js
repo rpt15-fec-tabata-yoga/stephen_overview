@@ -1,6 +1,6 @@
 const faker = require('faker');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://database/overview', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/overview', { useNewUrlParser: true });
 
 let db = mongoose.connection;
 
