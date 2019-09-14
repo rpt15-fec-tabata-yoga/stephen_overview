@@ -51,7 +51,7 @@ class App extends React.Component {
         })
       })
       .catch((err) => {
-        console.log('error in get request in client', err);
+        console.log('error in overview get request in client', err);
       });
   }
 
@@ -60,13 +60,12 @@ class App extends React.Component {
     axios.get(`/api/image/${this.state.gameId}`)
       .then((res) => {
         // handle data
-        console.log('res from axios get in client for image', res.data[0].imageUrl);
         if (res.data[0].imageUrl !== undefined) {
           this.setState({ image: res.data[0].imageUrl })
         }
       })
       .catch((err) => {
-        console.log('error in get request in client', err);
+        console.log('error in image get request in client', err);
       });
   }
 
@@ -103,7 +102,7 @@ class App extends React.Component {
       });
     })
     .catch((err) => {
-      throw(err);
+      console.log('error in reviews get request in client', err);
     });
   }
 
