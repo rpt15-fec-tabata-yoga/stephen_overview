@@ -39,8 +39,7 @@ class App extends React.Component {
 
   // getGameData using axios get
   getGameData() {
-    console.log('process.env.api_url in client', process.env.API_URL);
-    axios.get(`${process.env.API_URL}/api/overview/${this.state.gameId}`)
+    axios.get(`/api/overview/${this.state.gameId}`)
       .then((res) => {
         // handle data
         this.setState({
@@ -58,11 +57,13 @@ class App extends React.Component {
 
   // review once Bryan updates his database
   getImage() {
-    axios.get(`${process.env.API_URL}/api/image/${this.state.gameId}`)
+    axios.get(`/api/image/${this.state.gameId}`)
       .then((res) => {
         // handle data
-        // console.log('res from axios get in client for image', res.data[0].imageUrl);
-        this.setState({ image: res.data[0].imageUrl })
+        console.log('res from axios get in client for image', res.data[0].imageUrl);
+        if (res.data[0].imageUrl !== undefined) {
+          this.setState({ image: res.data[0].imageUrl })
+        }
       })
       .catch((err) => {
         console.log('error in get request in client', err);
@@ -71,7 +72,7 @@ class App extends React.Component {
 
   // review once Therese sets up her database
   getReviews() {
-    axios.get(`${process.env.API_URL}/api/reviews/${this.state.gameId}`)
+    axios.get(`/api/reviews/${this.state.gameId}`)
     .then((data) => {
       this.setState({
         totalReviews: data.data
