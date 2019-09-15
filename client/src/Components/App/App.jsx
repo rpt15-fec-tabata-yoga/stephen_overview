@@ -27,8 +27,6 @@ class App extends React.Component {
       percentRecentPosOrNeg: ''
     };
 
-    // this.handleMouseOver = this.handleMouseOver.bind(this);
-    // this.handleMouseOut = this.handleMouseOut.bind(this);
   }
 
   componentDidMount() {
@@ -37,9 +35,8 @@ class App extends React.Component {
     this.getReviews();
   }
 
-  // getGameData using axios get
   getGameData() {
-    axios.get(`http://localhost:3000/api/overview/${this.state.gameId}`)
+    axios.get(`${process.env.API_URL}/api/overview/${this.state.gameId}`)
       .then((res) => {
         // handle data
         this.setState({
@@ -55,7 +52,6 @@ class App extends React.Component {
       });
   }
 
-  // review once Bryan updates his database
   getImage() {
     axios.get(`http://ec2-13-57-33-155.us-west-1.compute.amazonaws.com:3002/api/image/${this.state.gameId}/stardew_valley`)
       .then((res) => {
@@ -69,7 +65,6 @@ class App extends React.Component {
       });
   }
 
-  // review once Therese sets up her database
   getReviews() {
     axios.get(`http://ec2-54-67-60-167.us-west-1.compute.amazonaws.com/api/reviews/Stardew%20Valley`)
     .then((data) => {
