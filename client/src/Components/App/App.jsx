@@ -6,6 +6,7 @@ import Details from '../Details/Details.jsx';
 import Tags from '../Tags/Tags.jsx';
 import styles from '../../../../public/style.css';
 import isPosOrNeg from '../../../../utils/utilities.js';
+import { devEndpoint, prodEndpoint } from '../../../../config.js';
 
 
 class App extends React.Component {
@@ -30,13 +31,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+    console.log('process.env.DEV_API_URL', process.env.DEV_API_URL);
+    console.log('devEndpoint', devEndpoint);
     this.getGameData();
     this.getImage();
     this.getReviews();
   }
 
   getGameData() {
-    axios.get(`${process.env.API_URL}/api/overview/${this.state.gameId}`)
+    console.log()
+    axios.get(`${devEndpoint}/api/overview/${this.state.gameId}`)
       .then((res) => {
         // handle data
         this.setState({

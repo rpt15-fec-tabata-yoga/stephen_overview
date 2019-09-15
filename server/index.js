@@ -1,15 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const compression = require('compression');
 const cors = require('cors');
 const db = require('../db/index.js');
-const dotenv = require('dotenv');
 const port = 3000;
 
 const app = express();
 
-dotenv.config();
 app.use(cors());
 app.use('/', express.static('public'));
 app.use('/:gameId', express.static('public'));

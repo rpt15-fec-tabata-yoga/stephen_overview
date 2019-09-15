@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+const { devDb, prodDb, nodeEnv } = require('../config.js');
 
-if (process.env.NODE_ENV === 'dev') {
-  dotenv.config({ path: `${__dirname}/../.env.dev` });
+if (process.env.NODE_ENV === 'development') {
+  mongoose.connect(`mongodb://${devDb}/overview`, { useNewUrlParser: true });
 } else {
-  dotenv.config({ path: `${__dirname}/../.env` });
+  mongoose.connect(`mongodb://${prodDb}/overview`, { useNewUrlParser: true });
 }
-mongoose.connect(`mongodb://${process.env.DB_HOST}/overview`, { useNewUrlParser: true });
 
 let db = mongoose.connection;
 
