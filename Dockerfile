@@ -2,19 +2,20 @@
 FROM node:12.9-alpine
 
 # Make a folder in your image where your app's source code can live
-RUN mkdir -p /src/app
+# RUN mkdir -p /src/app
 
 # Add git
-RUN apk add git
+# RUN apk add git
 
 # Tell your container where your app's source code will live
-WORKDIR /src/app
+WORKDIR /app
 
 # What source code do you what to copy, and where to put it?
-COPY . /src/app
+COPY package.json .
 
 # Does your app have any dependencies that should be installed?
 RUN npm install
+COPY . .
 
 # What port will the container talk to the outside world with once created?
 EXPOSE 3000
