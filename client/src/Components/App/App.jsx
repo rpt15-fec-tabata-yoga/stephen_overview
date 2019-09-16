@@ -6,7 +6,7 @@ import Details from '../Details/Details.jsx';
 import Tags from '../Tags/Tags.jsx';
 import styles from '../../../../public/style.css';
 import isPosOrNeg from '../../../../utils/utilities.js';
-import { devEndpoint, prodEndpoint } from '../../../../config.js';
+import { devEndpoint, prodEndpoint, nodeEnv } from '../../../../config.js';
 
 
 class App extends React.Component {
@@ -34,6 +34,13 @@ class App extends React.Component {
     console.log('process.env.NODE_ENV', process.env.NODE_ENV);
     console.log('process.env.DEV_API_URL', process.env.DEV_API_URL);
     console.log('devEndpoint', devEndpoint);
+    let endpoint = '';
+    if (nodeEnv === 'production') {
+      endpoint = prodEndpoint;
+    } else {
+      endpoint = devEndpoint;
+    }
+    console.log('endpoint', endpoint);
     this.getGameData();
     this.getImage();
     this.getReviews();
@@ -41,7 +48,7 @@ class App extends React.Component {
 
   getGameData() {
     console.log()
-    axios.get(`${devEndpoint}/api/overview/${this.state.gameId}`)
+    axios.get(`${endpoint}/api/overview/${this.state.gameId}`)
       .then((res) => {
         // handle data
         this.setState({
