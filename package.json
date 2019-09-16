@@ -8,8 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "dev": "webpack -d --watch --env.NODE_ENV=development --config webpack.config.dev.js",
     "build": "webpack -d --watch --env.NODE_ENV=production --config webpack.config.build.js",
+    "dev": "webpack -d --watch --env.NODE_ENV=development --config webpack.config.dev.js",
     "start": "NODE_ENV=production nodemon server/index.js",
     "startDev": "NODE_ENV=development nodemon server/index.js",
     "startDocker": "NODE_ENV=production && node db/seed.js && sleep 2 && nodemon server/index.js",
