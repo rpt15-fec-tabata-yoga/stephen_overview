@@ -34,6 +34,7 @@ class App extends React.Component {
     console.log('process.env.NODE_ENV', process.env.NODE_ENV);
     console.log('process.env.DEV_API_URL', process.env.DEV_API_URL);
     console.log('devEndpoint', devEndpoint);
+    console.log('prodEndpoint', prodEndpoint);
     let endpoint = '';
     if (nodeEnv === 'production') {
       endpoint = prodEndpoint;
