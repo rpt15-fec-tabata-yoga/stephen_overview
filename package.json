@@ -12,7 +12,7 @@
     "build": "webpack -d --watch --env.NODE_ENV=production --config webpack.config.build.js",
     "start": "NODE_ENV=production nodemon server/index.js",
     "startDev": "NODE_ENV=development nodemon server/index.js",
-    "startDocker": "node db/seed.js && sleep 2 && NODE_ENV=production nodemon server/index.js",
+    "startDocker": "NODE_ENV=production && node db/seed.js && sleep 2 && nodemon server/index.js",
     "db:setup": "node db/seed.js",
     "test": "jest --verbose --coverage",
     "test:watch": "jest --verbose --coverage --watch",
