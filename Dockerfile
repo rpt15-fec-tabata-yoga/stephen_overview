@@ -16,6 +16,7 @@ COPY package.json .
 # Does your app have any dependencies that should be installed?
 RUN npm install
 COPY . .
+ENV NODE_ENV=production
 
 # What port will the container talk to the outside world with once created?
 EXPOSE 3000
