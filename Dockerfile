@@ -15,6 +15,7 @@ COPY package.json .
 
 # Does your app have any dependencies that should be installed?
 RUN npm install
+RUN npm run build
 COPY . .
 
 # What port will the container talk to the outside world with once created?
