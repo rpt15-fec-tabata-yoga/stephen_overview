@@ -7,6 +7,9 @@ WORKDIR /app
 # What source code do you what to copy, and where to put it?
 COPY package.json .
 
+# Build for production
+RUN npm run build --production
+
 # Does your app have any dependencies that should be installed?
 RUN npm install
 COPY . .
