@@ -48,7 +48,7 @@ class App extends React.Component {
 
   getGameData() {
     console.log()
-    axios.get(`${endpoint}/api/overview/${this.state.gameId}`)
+    axios.get(`${prodEndpoint}/api/overview/${this.state.gameId}`)
       .then((res) => {
         // handle data
         this.setState({
