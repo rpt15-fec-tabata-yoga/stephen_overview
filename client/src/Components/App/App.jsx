@@ -6,6 +6,7 @@ import Details from '../Details/Details.jsx';
 import Tags from '../Tags/Tags.jsx';
 import styles from '../../../../public/style.css';
 import isPosOrNeg from '../../../../utils/utilities.js';
+import { devEndpoint, prodEndpoint, nodeEnv } from '../../../../config.js';
 
 
 class App extends React.Component {
@@ -27,20 +28,27 @@ class App extends React.Component {
       percentRecentPosOrNeg: ''
     };
 
-    // this.handleMouseOver = this.handleMouseOver.bind(this);
-    // this.handleMouseOut = this.handleMouseOut.bind(this);
+    this.endpoint = '';
   }
 
   componentDidMount() {
+    console.log('nodeEnv', nodeEnv);
+    if (nodeEnv === 'production') {
+      console.log('prodEndpoint', prodEndpoint);
+      this.endpoint = prodEndpoint;
+    } else {
+      console.log('devEndpoint', devEndpoint);
+      this.endpoint = devEndpoint;
+    }
+
+    console.log()
     this.getGameData();
     this.getImage();
     this.getReviews();
   }
 
-  // getGameData using axios get
   getGameData() {
-    console.log('process.env.api_url in client', process.env.API_URL);
-    axios.get(`${process.env.API_URL}/api/overview/${this.state.gameId}`)
+    axios.get(`${prodEndpoint}/api/overview/${this.state.gameId}`)
       .then((res) => {
         // handle data
         this.setState({
@@ -52,26 +60,25 @@ class App extends React.Component {
         })
       })
       .catch((err) => {
-        console.log('error in get request in client', err);
+        console.log('error in overview get request in client', err);
       });
   }
 
-  // review once Bryan updates his database
   getImage() {
-    axios.get(`${process.env.API_URL}/api/image/${this.state.gameId}`)
+    axios.get(`http://ec2-13-57-33-155.us-west-1.compute.amazonaws.com/api/image/${this.state.gameId}`)
       .then((res) => {
         // handle data
-        // console.log('res from axios get in client for image', res.data[0].imageUrl);
-        this.setState({ image: res.data[0].imageUrl })
+        if (res.data[0].imageUrl !== undefined) {
+          this.setState({ image: res.data[0].imageUrl })
+        }
       })
       .catch((err) => {
-        console.log('error in get request in client', err);
+        console.log('error in image get request in client', err);
       });
   }
 
-  // review once Therese sets up her database
   getReviews() {
-    axios.get(`${process.env.API_URL}/api/reviews/${this.state.gameId}`)
+    axios.get(`http://ec2-54-67-60-167.us-west-1.compute.amazonaws.com/api/reviews/Stardew%20Valley`)
     .then((data) => {
       this.setState({
         totalReviews: data.data
@@ -102,7 +109,7 @@ class App extends React.Component {
       });
     })
     .catch((err) => {
-      throw(err);
+      console.log('error in reviews get request in client', err);
     });
   }
 
