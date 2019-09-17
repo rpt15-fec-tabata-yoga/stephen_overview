@@ -32,6 +32,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log('nodeEnv', nodeEnv);
     if (nodeEnv === 'production') {
       console.log('prodEndpoint', prodEndpoint);
       this.endpoint = prodEndpoint;
