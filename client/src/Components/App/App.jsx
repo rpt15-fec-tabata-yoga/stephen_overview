@@ -33,8 +33,10 @@ class App extends React.Component {
 
   componentDidMount() {
     if (nodeEnv === 'production') {
+      console.log('prodEndpoint', prodEndpoint);
       this.endpoint = prodEndpoint;
     } else {
+      console.log('devEndpoint', devEndpoint);
       this.endpoint = devEndpoint;
     }
     console.log()
@@ -61,7 +63,7 @@ class App extends React.Component {
   }
 
   getImage() {
-    axios.get(`http://ec2-13-57-33-155.us-west-1.compute.amazonaws.com:3002/api/image/${this.state.gameId}/stardew_valley`)
+    axios.get(`http://ec2-13-57-33-155.us-west-1.compute.amazonaws.com:3002/api/image/${this.state.gameId}`)
       .then((res) => {
         // handle data
         if (res.data[0].imageUrl !== undefined) {
