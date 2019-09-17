@@ -3,6 +3,7 @@ const { devDb, prodDb, nodeEnv } = require('../config.js');
 
 console.log('devDb, prodDb, nodeEnv', devDb, prodDb, nodeEnv);
 
+
 if (nodeEnv === 'development') {
   mongoose.connect(`mongodb://${devDb}/overview`, { useNewUrlParser: true });
 } else {

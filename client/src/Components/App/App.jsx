@@ -6,7 +6,7 @@ import Details from '../Details/Details.jsx';
 import Tags from '../Tags/Tags.jsx';
 import styles from '../../../../public/style.css';
 import isPosOrNeg from '../../../../utils/utilities.js';
-import { devEndpoint, prodEndpoint, nodeEnv } from '../../../../config.js';
+import envVar from '../../../../config.js';
 
 
 class App extends React.Component {
@@ -33,10 +33,11 @@ class App extends React.Component {
 
   componentDidMount() {
     if (nodeEnv === 'production') {
-      this.endpoint = prodEndpoint;
+      this.endpoint = envVar.prodEndpoint;
     } else {
-      this.endpoint = devEndpoint;
+      this.endpoint = envVardevEndpoint;
     }
+    console.log('envVar', envVar);
     this.getGameData();
     this.getImage();
     this.getReviews();
