@@ -3,9 +3,9 @@ version: '3'
 services:
   overview:
     build: .
-    volumes:
-      - .:/src/app
-      - /app/node_modules
+    # volumes:
+    #   - .:/src/app
+    #   - /app/node_modules
 
     depends_on:
       - 'database'
