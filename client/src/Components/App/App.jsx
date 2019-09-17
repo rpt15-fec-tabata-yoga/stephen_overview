@@ -28,28 +28,22 @@ class App extends React.Component {
       percentRecentPosOrNeg: ''
     };
 
+    this.endpoint = '';
   }
 
   componentDidMount() {
-    console.log('process.env.NODE_ENV', process.env.NODE_ENV);
-    console.log('process.env.DEV_API_URL', process.env.DEV_API_URL);
-    console.log('devEndpoint', devEndpoint);
-    console.log('prodEndpoint', prodEndpoint);
-    let endpoint = '';
     if (nodeEnv === 'production') {
-      endpoint = prodEndpoint;
+      this.endpoint = prodEndpoint;
     } else {
-      endpoint = devEndpoint;
+      this.endpoint = devEndpoint;
     }
-    console.log('endpoint', endpoint);
     this.getGameData();
     this.getImage();
     this.getReviews();
   }
 
   getGameData() {
-    console.log()
-    axios.get(`${prodEndpoint}/api/overview/${this.state.gameId}`)
+    axios.get(`${this.endpoint}/api/overview/${this.state.gameId}`)
       .then((res) => {
         // handle data
         this.setState({

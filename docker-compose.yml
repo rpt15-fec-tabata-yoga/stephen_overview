@@ -11,6 +11,8 @@ services:
       - 'database'
     ports:
       - '80:3000'
+    environment:
+      - NODE_ENV=production
 
   database:
     image: mongo:latest
