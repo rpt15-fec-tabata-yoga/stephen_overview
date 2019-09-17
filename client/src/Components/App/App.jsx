@@ -69,8 +69,8 @@ class App extends React.Component {
       .then((res) => {
         console.log('res.data from bryan', res.data);
         // handle data
-        if (res.data[0].imageUrl !== undefined) {
-          this.setState({ image: res.data[0].imageUrl })
+        if (res.data !== undefined) {
+          this.setState({ image: res.data })
         }
       })
       .catch((err) => {
