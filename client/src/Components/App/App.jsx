@@ -65,8 +65,9 @@ class App extends React.Component {
   }
 
   getImage() {
-    axios.get(`http://ec2-13-57-33-155.us-west-1.compute.amazonaws.com/api/image/${this.state.gameId}`)
+    axios.get(`http://ec2-13-57-33-155.us-west-1.compute.amazonaws.com/api/overviewImage/${this.state.gameId}`)
       .then((res) => {
+        console.log('res.data from bryan', res.data);
         // handle data
         if (res.data[0].imageUrl !== undefined) {
           this.setState({ image: res.data[0].imageUrl })
