@@ -40,6 +40,7 @@ class App extends React.Component {
       console.log('devEndpoint', devEndpoint);
       this.endpoint = devEndpoint;
     }
+
     console.log()
     this.getGameData();
     this.getImage();
@@ -47,7 +48,7 @@ class App extends React.Component {
   }
 
   getGameData() {
-    axios.get(`${this.endpoint}/api/overview/${this.state.gameId}`)
+    axios.get(`${prodEndpoint}/api/overview/${this.state.gameId}`)
       .then((res) => {
         // handle data
         this.setState({

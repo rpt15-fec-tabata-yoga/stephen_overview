@@ -1,5 +1,6 @@
 const webpack = require('webpack');
-const dotenv = require('dotenv').config({ path: __dirname + '/.env' });
+const dotenv = require('dotenv');
+dotenv.config({ path: __dirname + '/.env' });
 
 module.exports = () => {
   const envKeys = Object.keys(process.env).reduce((prev, next) => {
