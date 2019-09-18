@@ -78,8 +78,9 @@ class App extends React.Component {
   }
 
   getReviews() {
-    axios.get(`http://ec2-54-67-60-167.us-west-1.compute.amazonaws.com/api/reviews/1`)
+    axios.get(`http://ec2-54-183-55-106.us-west-1.compute.amazonaws.com/api/reviews/1`)
     .then((data) => {
+      console.log('data from therese in client', data)
       this.setState({
         totalReviews: data.data
       });
