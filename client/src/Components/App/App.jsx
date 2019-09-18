@@ -32,16 +32,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('nodeEnv', nodeEnv);
+    // console.log('nodeEnv', nodeEnv);
     if (nodeEnv === 'production') {
-      console.log('prodEndpoint', prodEndpoint);
       this.endpoint = prodEndpoint;
     } else {
-      console.log('devEndpoint', devEndpoint);
       this.endpoint = devEndpoint;
     }
 
-    console.log()
     this.getGameData();
     this.getImage();
     this.getReviews();
@@ -65,11 +62,11 @@ class App extends React.Component {
   }
 
   getImage() {
-    axios.get(`http://ec2-13-57-33-155.us-west-1.compute.amazonaws.com/api/image/${this.state.gameId}`)
+    axios.get(`http://ec2-13-57-33-155.us-west-1.compute.amazonaws.com/api/overviewImage/${this.state.gameId}`)
       .then((res) => {
         // handle data
-        if (res.data[0].imageUrl !== undefined) {
-          this.setState({ image: res.data[0].imageUrl })
+        if (res.data !== undefined) {
+          this.setState({ image: res.data })
         }
       })
       .catch((err) => {
@@ -78,7 +75,7 @@ class App extends React.Component {
   }
 
   getReviews() {
-    axios.get(`http://ec2-54-67-60-167.us-west-1.compute.amazonaws.com/api/reviews/Stardew%20Valley`)
+    axios.get(`http://ec2-54-183-55-106.us-west-1.compute.amazonaws.com/api/reviews/1`)
     .then((data) => {
       this.setState({
         totalReviews: data.data
