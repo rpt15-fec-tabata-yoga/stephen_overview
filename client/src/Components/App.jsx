@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import BannerImage from '../BannerImage/BannerImage.jsx';
-import Summary from '../Summary/Summary.jsx';
-import Details from '../Details/Details.jsx';
-import Tags from '../Tags/Tags.jsx';
-import styles from '../../../../public/style.css';
-import isPosOrNeg from '../../../../utils/utilities.js';
-import { devEndpoint, prodEndpoint, nodeEnv } from '../../../../config.js';
+import BannerImage from './BannerImage.jsx';
+import Summary from './Summary.jsx';
+import Details from './Details.jsx';
+import Tags from './Tags.jsx';
+import styles from '../../../public/style.css';
+import isPosOrNeg from '../../../utils/utilities.js';
+import { devEndpoint, prodEndpoint, nodeEnv } from '../../../config.js';
 
 
 class App extends React.Component {

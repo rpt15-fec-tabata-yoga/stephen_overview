@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from '../../../../public/style.css';
-import Tooltip from '../Tooltip/Tooltip.jsx';
+import styles from '../../../public/style.css';
+import Tooltip from './Tooltip.jsx';
 
 
 class Details extends React.Component {
