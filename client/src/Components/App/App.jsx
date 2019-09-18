@@ -67,7 +67,6 @@ class App extends React.Component {
   getImage() {
     axios.get(`http://ec2-13-57-33-155.us-west-1.compute.amazonaws.com/api/overviewImage/${this.state.gameId}`)
       .then((res) => {
-        console.log('res.data from bryan', res.data);
         // handle data
         if (res.data !== undefined) {
           this.setState({ image: res.data })
@@ -79,7 +78,7 @@ class App extends React.Component {
   }
 
   getReviews() {
-    axios.get(`http://ec2-54-67-60-167.us-west-1.compute.amazonaws.com/api/reviews/Stardew%20Valley`)
+    axios.get(`http://ec2-54-67-60-167.us-west-1.compute.amazonaws.com/api/reviews/1`)
     .then((data) => {
       this.setState({
         totalReviews: data.data
