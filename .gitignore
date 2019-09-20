@@ -25,5 +25,3 @@ build/
 
 # .env files
 .env
-
-.aws.json
