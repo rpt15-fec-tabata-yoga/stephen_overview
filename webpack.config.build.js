@@ -1,17 +1,10 @@
 const webpack = require('webpack');
+const CompressionPlugin = require('compression-webpack-plugin');
 const dotenv = require('dotenv');
-const fs = require('fs');
-const path = require('path');
+dotenv.config({ path: __dirname + '/.env' });
 
 module.exports = () => {
-  const basePath = path.join(__dirname) + '/.env';
-  const envPath = basePath + '.' + process.env.ENVIRONMENT;
-
-  // check if file exists, otherwise fall back to production .env
-  const finalPath = fs.existsSync(envPath) ? envPath : basePath;
-  const fileEnv = dotenv.config({ path: finalPath }).parsed;
-
-  const envKeys = Object.keys(fileEnv).reduce((prev, next) => {
+  const envKeys = Object.keys(process.env).reduce((prev, next) => {
     prev[`process.env.${next}`] = JSON.stringify(process.env[next]);
     return prev;
   }, {});
@@ -50,7 +43,17 @@ module.exports = () => {
       path: __dirname + '/public/dist/'
     },
     plugins: [
-      new webpack.DefinePlugin(envKeys)
-    ]
+      new webpack.DefinePlugin(envKeys),
+      new CompressionPlugin({
+        filename: "[path].gz[query]",
+        algorithm: "gzip",
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 10240,
+        minRatio: 0.8
+      })
+    ],
+    node: {
+      fs: 'empty'
+    }
   };
 };

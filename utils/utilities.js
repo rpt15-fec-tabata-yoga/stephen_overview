@@ -27,6 +27,8 @@ const isPosOrNeg = (revs) => {
       result.push('Overwhelmingly Negative');
     }
   } else if (pos === neg) {
+    let percent = (pos / revs.length) * 100;
+    result.push(percent.toString());
     result.push('Very Positive');
   }
 

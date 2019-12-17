@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import BannerImage from '../BannerImage/BannerImage.jsx';
-import Summary from '../Summary/Summary.jsx';
-import Details from '../Details/Details.jsx';
-import Tags from '../Tags/Tags.jsx';
-import styles from '../../../../public/style.css';
-import isPosOrNeg from '../../../../utils/utilities.js';
+import BannerImage from './BannerImage.jsx';
+import Summary from './Summary.jsx';
+import Details from './Details.jsx';
+import Tags from './Tags.jsx';
+import styles from '../../../public/style.css';
+import isPosOrNeg from '../../../utils/utilities.js';
+import { devEndpoint, prodEndpoint, nodeEnv } from '../../../config.js';
 
 
 class App extends React.Component {
@@ -27,20 +28,24 @@ class App extends React.Component {
       percentRecentPosOrNeg: ''
     };
 
-    // this.handleMouseOver = this.handleMouseOver.bind(this);
-    // this.handleMouseOut = this.handleMouseOut.bind(this);
+    this.endpoint = '';
   }
 
   componentDidMount() {
+    // console.log('nodeEnv', nodeEnv);
+    if (nodeEnv === 'production') {
+      this.endpoint = prodEndpoint;
+    } else {
+      this.endpoint = devEndpoint;
+    }
+
     this.getGameData();
     this.getImage();
     this.getReviews();
   }
 
-  // getGameData using axios get
   getGameData() {
-    console.log('process.env.api_url in client', process.env.API_URL);
-    axios.get(`${process.env.API_URL}/api/overview/${this.state.gameId}`)
+    axios.get(`${prodEndpoint}/api/overview/${this.state.gameId}`)
       .then((res) => {
         // handle data
         this.setState({
@@ -52,26 +57,25 @@ class App extends React.Component {
         })
       })
       .catch((err) => {
-        console.log('error in get request in client', err);
+        console.log('error in overview get request in client', err);
       });
   }
 
-  // review once Bryan updates his database
   getImage() {
-    axios.get(`${process.env.API_URL}/api/image/${this.state.gameId}`)
+    axios.get(`http://ec2-13-57-33-155.us-west-1.compute.amazonaws.com/api/overviewImage/${this.state.gameId}`)
       .then((res) => {
         // handle data
-        // console.log('res from axios get in client for image', res.data[0].imageUrl);
-        this.setState({ image: res.data[0].imageUrl })
+        if (res.data !== undefined) {
+          this.setState({ image: res.data })
+        }
       })
       .catch((err) => {
-        console.log('error in get request in client', err);
+        console.log('error in image get request in client', err);
       });
   }
 
-  // review once Therese sets up her database
   getReviews() {
-    axios.get(`${process.env.API_URL}/api/reviews/${this.state.gameId}`)
+    axios.get(`http://ec2-54-183-55-106.us-west-1.compute.amazonaws.com/api/reviews/1`)
     .then((data) => {
       this.setState({
         totalReviews: data.data
@@ -102,7 +106,7 @@ class App extends React.Component {
       });
     })
     .catch((err) => {
-      throw(err);
+      console.log('error in reviews get request in client', err);
     });
   }
 
