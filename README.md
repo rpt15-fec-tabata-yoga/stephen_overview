@@ -1,6 +1,6 @@
-# Project Name
+# Game Overview Module
 
-> This repo is a clone of the overview module on the Stardew Valley page of Steam (https://store.steampowered.com/app/413150/Stardew_Valley/). I re-created that module so that it can take in data from the other modules on the page and I have a separate repo where I created a proxy server to render all the modules on one page.
+> This repo is a clone of the overview module on the Stardew Valley page of Steam (https://store.steampowered.com/app/413150/Stardew_Valley/).
 
 ***Tools used:***
  - Server: Node, Express
